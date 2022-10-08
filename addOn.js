@@ -57,30 +57,4 @@ function runAPA() {
 
 function runChicago() {
     // James
-    // -Set margins
-    // -Set a page number
-    // -Set double spacing
-    // -Left Align text
-    // -Chapter heading, subheading, second level subheading
-    // -block quotes, blank line around, additional 1/2 inch indent, single spaced.
-    setParagraphAlignment("LEFT")
-    setParagraphSpacing(2);
-    
-    
-}
-
-function setParagraphAlignment(position) {
-    // Function that sets the horizontal alignment for all paragraphs in the body of the document.
-    let paragraphs = DocumentApp.getActiveDocument().getBody().getParagraphs();
-    for (let i = 0;i < paragraphs.length;i++) {
-      paragraphs[i].setAlignment(DocumentApp.HorizontalAlignment.position);
-    }
-}
-
-function setParagraphSpacing(spaces) {
-    // Function that sets the line spacing for all paragraphs based on amount of empty lines between text.
-    let paragraphs = DocumentApp.getActiveDocument().getBody().getParagraphs();
-    for (let i = 0;i < paragraphs.length;i++) {
-      paragraphs[i].setLineSpacing(spaces);
-    }
 }
