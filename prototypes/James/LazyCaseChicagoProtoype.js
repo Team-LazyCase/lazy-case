@@ -8,13 +8,6 @@ function onOpen() {
         .addToUi();
 }
 
-// A copy-paste function that capitalizes the first letter of every word.
-function toTitleCase(str) {
-    return str.replace(/\w\S*/g, function (txt) {
-        return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-    });
-}
-
 function runChicago() {
     // James
     // -Set margins
@@ -27,7 +20,7 @@ function runChicago() {
     setParagraphSpacing(2);
     setPageMargins(72, 72, 72, 72);
     setParagraphIndentation(36);
-    
+    setHeadingCapitalization();
     
 }
 
@@ -62,6 +55,24 @@ function setParagraphIndentation(space) {
     for (let i = 0;i < paragraphs.length;i++) {
       paragraphs[i].setIndentFirstLine(space);
     }
+}
+
+function setHeadingCapitalization() {
+    let paragraphs = DocumentApp.getActiveDocument().getBody().getParagraphs();
+    for (let i = 0;i < paragraphs.length;i++) {
+      let style = paragraphs[i].getHeading();
+      if (style === DocumentApp.ParagraphHeading.HEADING1) {
+          let outputText = toTitleCase(paragraphs[i].getText());
+          paragraphs[i].setText(outputText);
+      }
+      
+    }
+}
+
+function toTitleCase(str) {
+    return str.replace(/\w\S*/g, function (txt) {
+        return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+    });
 }
 
 // function setPageNumbers() {
