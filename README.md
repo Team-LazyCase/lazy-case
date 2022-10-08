@@ -5,4 +5,4 @@
 Build a Google Docs add-on that formats the document's titles and headers to title case in real time. This add-on supports APA, MLA, AP, and Chicago. 
 
 ## What is the problem?
-The built-in functionality of Google Docs is extreamly limited: it will automatically capitalize all first letters and it can't autoformat in real time. Existing add-ons are less than ideal, with ratings of less that 3 stars and plenty of complaints. We want to spend our time writting, not formatting titles and headers manually or with tools such as titlecaseconverter.com.
+The built-in functionality of Google Docs is extremely limited: it will automatically capitalize all first letters and it can't autoformat in real time. Existing add-ons are less than ideal, with ratings of less that 3 stars and plenty of complaints. We want to spend our time writing, not formatting titles and headers manually or with tools such as titlecaseconverter.com.
