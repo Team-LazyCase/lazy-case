@@ -1,3 +1,10 @@
+function onOpen() {
+    DocumentApp.getUi()
+        .createMenu('LazyCase')
+        .addItem('Run AP', 'runAP')
+        .addToUi();
+}
+
 function runAP() {
   var header = DocumentApp.getActiveDocument().getHeader();
   var title = header.editAsText()
