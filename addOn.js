@@ -255,21 +255,21 @@ function runAPA() {
   // Brandon
 }
 
+// James
 function runChicago() {
   // TODO: Set a page number
   // TODO: block quotes, blank line around, additional 1/2 inch indent, single spaced.
-  setParagraphAlignment("LEFT")
+  setParagraphAlignment('LEFT');
   setParagraphSpacing(2);
   setPageMargins(72, 72, 72, 72);
   setParagraphIndentation(36);
   setHeadingFormatting();
-  
 }
 
 function setParagraphAlignment(position) {
   // Function that sets the horizontal alignment for all paragraphs in the body of the document.
   let paragraphs = DocumentApp.getActiveDocument().getBody().getParagraphs();
-  for (let i = 0;i < paragraphs.length;i++) {
+  for (let i = 0; i < paragraphs.length; i++) {
     paragraphs[i].setAlignment(DocumentApp.HorizontalAlignment.position);
   }
 }
@@ -277,7 +277,7 @@ function setParagraphAlignment(position) {
 function setParagraphSpacing(spaces) {
   // Function that sets the line spacing for all paragraphs based on amount of empty lines between text.
   let paragraphs = DocumentApp.getActiveDocument().getBody().getParagraphs();
-  for (let i = 0;i < paragraphs.length;i++) {
+  for (let i = 0; i < paragraphs.length; i++) {
     paragraphs[i].setLineSpacing(spaces);
   }
 }
@@ -293,8 +293,8 @@ function setPageMargins(top, bottom, left, right) {
 
 function setParagraphIndentation(space) {
   // Function that sets the indentation for the first line of a paragraph. Specified in points
- let paragraphs = DocumentApp.getActiveDocument().getBody().getParagraphs();
-  for (let i = 0;i < paragraphs.length;i++) {
+  let paragraphs = DocumentApp.getActiveDocument().getBody().getParagraphs();
+  for (let i = 0; i < paragraphs.length; i++) {
     paragraphs[i].setIndentFirstLine(space);
   }
 }
@@ -302,31 +302,28 @@ function setParagraphIndentation(space) {
 function setHeadingFormatting() {
   // Function that changes capitalization of headings, and applies other formatting specific to headings not paragraphs.)
   let paragraphs = DocumentApp.getActiveDocument().getBody().getParagraphs();
-  for (let i = 0;i < paragraphs.length;i++) {
+  for (let i = 0; i < paragraphs.length; i++) {
     let style = paragraphs[i].getHeading();
-    if ((style === DocumentApp.ParagraphHeading.HEADING1) || (style === DocumentApp.ParagraphHeading.HEADING2)) {
-        let outputText = toTitleCaseChicago(paragraphs[i].getText());
-        paragraphs[i].setText(outputText);
-        paragraphs[i].setIndentFirstLine(0);
+    if (
+      style === DocumentApp.ParagraphHeading.HEADING1 ||
+      style === DocumentApp.ParagraphHeading.HEADING2
+    ) {
+      let outputText = toTitleCaseChicago(paragraphs[i].getText());
+      paragraphs[i].setText(outputText);
+      paragraphs[i].setIndentFirstLine(0);
     }
   }
 }
 
 function toTitleCaseChicago(str) {
   // Function that converts heading string to Chicago Style title casing.
-  const coordinatingConjunctions = [
-      'for',
-      'and',
-      'nor',
-      'but',
-      'or'
-    ];
+  const coordinatingConjunctions = ['for', 'and', 'nor', 'but', 'or'];
   // Splits the string into substrings by white space and checks for conjunctions that are left out of capitalization in Chicago Style. returns the capitalized string.
   return str.replace(/\w\S*/g, function (txt) {
-      if (!coordinatingConjunctions.includes(txt)){
-          return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-      } else {
-          return txt.toLowerCase();
-      }
+    if (!coordinatingConjunctions.includes(txt)) {
+      return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+    } else {
+      return txt.toLowerCase();
+    }
   });
 }
