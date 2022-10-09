@@ -24,7 +24,7 @@ We learned a lot about the necessity of version control and efficiently communic
 
 # What's next for LazyCase?
 
-We want to expand our product with other styles such as APA. We also want to implement part-of-speech tagging to evaluate independent words in a corpus for context more accurately — e.g., the term "to" is capitalized in some style titles if preceding an infinitive, but it's lowercase if used as a preposition. Language possesses countless potential error cases only addressable by natural language processing, which is an entire field altogether. We would also upgrade LazyCase to address common typos and unconventional punctuation and remain up-to-date with shifting style conventions.
+We want to expand our product with other styles such as APA. We also want to implement part-of-speech tagging to evaluate independent words in a corpus for context more accurately — e.g., the term "to" is capitalized in some style titles if preceding an infinitive, but it's lowercase if used as a preposition. Language possesses countless potential error cases only addressable by natural language processing, which is an entire field altogether. We would also upgrade LazyCase to address common typos and unconventional punctuation while remaining up-to-date with shifting style conventions.
 
 Built with: Google Apps Script, Visual Studio Code, JavaScript, HTML, Node.js, Git, Clasp
 
