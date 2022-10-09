@@ -1,6 +1,6 @@
 # Why make it?
 
-Formatting documents to academic styles often requires a Google search here, some second-guessing there — and always once a student is tired from finishing an assignment. Our team's add-on ideally automates this task with minimal hassle. 
+Formatting documents to academic styles often requires a Google search here, some second-guessing there — and always once a student is tired from finishing an assignment. Our team's add-on automates this task with minimal hassle. 
 
 # What it does: 
 
