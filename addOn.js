@@ -158,6 +158,8 @@ different prepositions in the English language.*/
   if (isWord(currentWord)) {
     outputText += capitalizeFirstLetter(currentWord);
   }
+
+  return outputText;
 }
 
 // Jonas
