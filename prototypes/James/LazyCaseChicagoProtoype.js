@@ -9,18 +9,13 @@ function onOpen() {
 }
 
 function runChicago() {
-    // James
-    // -Set margins
-    // -Set a page number
-    // -Set double spacing
-    // -Left Align text
-    // -Chapter heading, subheading, second level subheading
-    // -block quotes, blank line around, additional 1/2 inch indent, single spaced.
+    // TODO: Set a page number
+    // TODO: block quotes, blank line around, additional 1/2 inch indent, single spaced.
     setParagraphAlignment("LEFT")
     setParagraphSpacing(2);
     setPageMargins(72, 72, 72, 72);
     setParagraphIndentation(36);
-    setHeadingCapitalization();
+    setHeadingFormatting();
     
 }
 
@@ -57,29 +52,36 @@ function setParagraphIndentation(space) {
     }
 }
 
-function setHeadingCapitalization() {
+function setHeadingFormatting() {
+    // Function that changes capitalization of headings, and unindents them (since headings count as paragraphs, but should not be indented.)
     let paragraphs = DocumentApp.getActiveDocument().getBody().getParagraphs();
     for (let i = 0;i < paragraphs.length;i++) {
       let style = paragraphs[i].getHeading();
-      if (style === DocumentApp.ParagraphHeading.HEADING1) {
-          let outputText = toTitleCase(paragraphs[i].getText());
+      if ((style === DocumentApp.ParagraphHeading.HEADING1) || (style === DocumentApp.ParagraphHeading.HEADING2)) {
+          let outputText = toTitleCaseChicago(paragraphs[i].getText());
           paragraphs[i].setText(outputText);
+          paragraphs[i].setIndentFirstLine(0);
       }
-      
     }
 }
 
-function toTitleCase(str) {
+function toTitleCaseChicago(str) {
+    const coordinatingConjunctions = [
+        'for',
+        'and',
+        'nor',
+        'but',
+        'or'
+      ];
+
     return str.replace(/\w\S*/g, function (txt) {
-        return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+        if (!coordinatingConjunctions.includes(txt)){
+            return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+        } else {
+            return txt.toLowerCase();
+        }
     });
 }
-
-// function setPageNumbers() {
-//   DocumentApp.getActiveDocument().addHeader();
-//     let header = DocumentApp.getActiveDocument().getHeader();
-    
-// }
 
 // function createBlockQuote() {
 
