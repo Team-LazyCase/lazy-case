@@ -1,29 +1,50 @@
 function onOpen() {
     DocumentApp.getUi()
-        .createMenu('LazyCase')
-        .addItem('Run AP', 'runAP')
+        .createMenu("LazyCase")
+        .addItem("Run AP", "runAP")
         .addToUi();
 }
 
-function runAP() {
-  var header = DocumentApp.getActiveDocument().getHeader();
-  var title = header.editAsText()
-  var old_title = header.getText()
-  var new_title = header.getText()
+function onInstall() {
+  onOpen();
+}
 
-  var new_title = new_title.toLowerCase();
-  var new_title = new_title.split(" ");
+function runAP() {
+  var arr = []
+  var body = DocumentApp.getActiveDocument().getBody();
+  var paragraphs = body.getParagraphs();
+  paragraphs.forEach(paragraph => {
+    var style = paragraph.getHeading();
+    if (style != DocumentApp.ParagraphHeading.NORMAL) {
+      arr.push(paragraph.getText().split(" "));
+    }
+    return arr
+  })
 
   var banned = ["a", "an", "the", "for", "and", "nor", "but", "or", "yet", "so", "ago", "as", "at", "by", "for", "in", "of", "off", "on", "out", "per", "to", "up", "via"]
 
-  for (let i = 0; i < new_title.length; i++) {
-    new_title[0] = new_title[0].charAt(0).toUpperCase() + new_title[0].slice(1)
-    new_title[new_title.length - 1] = new_title[new_title.length - 1].charAt(0).toUpperCase() + new_title[new_title.length - 1].slice(1)
-    if (banned.includes(new_title[i]) == false) {
-      new_title[i] = new_title[i].charAt(0).toUpperCase() + new_title[i].slice(1);
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = 0; j < arr[i].length; j++) {
+      if (arr[i][j].toString() == arr[i][j].toString().toUpperCase()) {
+        arr[i][j] = arr[i][j].toLowerCase()
+      }
+
+      if (banned.includes(arr[i][j]) == false) {
+        arr[i][j] = arr[i][j].charAt(0).toUpperCase() + arr[i][j].slice(1);
+      }
     }
+
+    arr[i][0] = arr[i][0].charAt(0).toUpperCase() + arr[i][0].slice(1);
+    arr[i][arr[i].length - 1] = arr[i][arr[i].length - 1].charAt(0).toUpperCase() + arr[i][arr[i].length - 1].slice(1);
+
+    arr[i] = arr[i].join(" ")
   }
-  
-  var new_title = new_title.join(" ")
-  title.replaceText(old_title, new_title);
+
+  paragraphs.forEach(paragraph => {
+    for (let i = 0; i < arr.length; i++) {
+      if (paragraph.getText().toLowerCase() == arr[i].toLowerCase()) {
+        paragraph.editAsText().replaceText(paragraph.getText(), arr[i])
+      }
+    }
+  })
 }
