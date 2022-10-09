@@ -179,7 +179,6 @@ function runMLA() {
   // TODO: Implement the do-not-capitalize-prepositions rule (add to list)
   // TODO: Implement the do-not-capitalize-to-in-infinitives rule (dict. API)
   // TODO: Implement the do-not-capitalize-certain-compound-words rule (dict. API)
-  // TODO: Fix colon edge case "2020: your Great Year"
   // TODO: Fix hyphenated word edge case.
 }
 
