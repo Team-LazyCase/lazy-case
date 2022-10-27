@@ -326,3 +326,28 @@ function toTitleCaseChicago(str) {
     }
   });
 }
+
+/* TESTS */
+function testMLA() {
+  // TODO: Make a function that you can run to test the toTitleCaseMLA function.
+
+  // Input data
+  testCases = ['Hello world!', 'how are you today?'];
+
+  // Expected output data
+  expectedOutputs = ['Hello World!', 'How Are You Today'];
+
+  // Test the input data, compare it to the expected output, and log results.
+  for (let i = 0; i < testCases.length; i++) {
+    testOutput = toTitleCaseMLA(testCases[i]);
+    if (testOutput === expectedOutputs[i]) {
+      console.log(
+        `Test ${i + 1} result: Passed ("${testCases[i]}" > "${testOutput}")`
+      );
+    } else {
+      console.log(
+        `Test ${i + 1} result: Passed ("${testCases[i]}" > "${testOutput}")`
+      );
+    }
+  }
+}
