@@ -160,6 +160,12 @@ different prepositions in the English language.*/
   }
 
   return outputText;
+
+  // TODO: Finish implementing the do-not-capitalize-prepositions rule (add to list)
+  // TODO: Implement the do-not-capitalize-to-in-infinitives rule (dict. API or local data)
+  // TODO: Implement the do-not-capitalize-certain-compound-words rule (dict. API or local data)
+  // TODO: Do not capitalize the i in "i.e."
+  // TODO: Do not reduce acronyms to lower case.
 }
 
 // Jonas
@@ -175,11 +181,6 @@ function runMLA() {
       paragraph.setText(outputText);
     }
   });
-
-  // TODO: Implement the do-not-capitalize-prepositions rule (add to list)
-  // TODO: Implement the do-not-capitalize-to-in-infinitives rule (dict. API)
-  // TODO: Implement the do-not-capitalize-certain-compound-words rule (dict. API)
-  // TODO: Fix hyphenated word edge case.
 }
 
 // Mason
@@ -329,24 +330,42 @@ function toTitleCaseChicago(str) {
 
 /* TESTS */
 function testMLA() {
-  // TODO: Make a function that you can run to test the toTitleCaseMLA function.
+  // This function is used to test the toTitleCaseMLA() function.
 
-  // Input data
-  testCases = ['Hello world!', 'how are you today?'];
+  // Input strings for testing.
+  testCases = [
+    'Hello world!',
+    'how are you today?',
+    'ABBA is a band',
+    'the run-away-at-any-chance dog',
+  ];
 
-  // Expected output data
-  expectedOutputs = ['Hello World!', 'How Are You Today'];
+  // Expected output for the input strings.
+  expectedOutputs = [
+    'Hello World!',
+    'How Are You Today',
+    'ABBA Is a Band',
+    'The Run-Away-at-Any-Chance Dog',
+  ];
 
   // Test the input data, compare it to the expected output, and log results.
   for (let i = 0; i < testCases.length; i++) {
     testOutput = toTitleCaseMLA(testCases[i]);
     if (testOutput === expectedOutputs[i]) {
       console.log(
-        `Test ${i + 1} result: Passed ("${testCases[i]}" > "${testOutput}")`
+        `Test ${i + 1} result: PASSED (test input: "${
+          testCases[i]
+        }" > test output: "${testOutput}" | expected output: "${
+          expectedOutputs[i]
+        }")`
       );
     } else {
       console.log(
-        `Test ${i + 1} result: Passed ("${testCases[i]}" > "${testOutput}")`
+        `Test ${i + 1} result: FAILED (test input: "${
+          testCases[i]
+        }" > test output: "${testOutput}" | expected output: "${
+          expectedOutputs[i]
+        }")`
       );
     }
   }
