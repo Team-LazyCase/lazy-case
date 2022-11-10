@@ -160,12 +160,6 @@ different prepositions in the English language.*/
   }
 
   return outputText;
-
-  // TODO: Finish implementing the do-not-capitalize-prepositions rule (add to list)
-  // TODO: Implement the do-not-capitalize-to-in-infinitives rule (dict. API or local data)
-  // TODO: Implement the do-not-capitalize-certain-compound-words rule (dict. API or local data)
-  // TODO: Do not capitalize the i in "i.e."
-  // TODO: Do not reduce acronyms to lower case.
 }
 
 // Jonas
@@ -343,7 +337,7 @@ function testMLA() {
   // Expected output for the input strings.
   expectedOutputs = [
     'Hello World!',
-    'How Are You Today',
+    'How Are You Today?',
     'ABBA Is a Band',
     'The Run-Away-at-Any-Chance Dog',
   ];
