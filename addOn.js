@@ -248,6 +248,33 @@ function toTitleCaseMLA(inputText) {
     return word;
   }
 
+  function isVerb(word) {
+    var url = 'https://api.dictionaryapi.dev/api/v2/entries/en/' + word;
+    var response = UrlFetchApp.fetch(url);
+
+    // Turn response into something JavaScript can work with
+    json = response.getContentText()
+    var data = JSON.parse(json);
+
+    // Get the number of different parts of speech attributed to the word 
+    // (i.e., noun, adjective, verb, etc.)
+    numberOfMeanings = data[0].meanings.length
+
+    partsOfSpeech = []
+    for (let i = 0; i < numberOfMeanings; i++) {
+      partsOfSpeech.push(data[0].meanings[i].partOfSpeech)
+    }
+
+    // Determine if the word is a verb
+    if (partsOfSpeech.includes("verb")) {
+      Logger.log("true")
+      return true
+    } else {
+      Logger.log("false")
+      return false
+    }
+  }
+
   // Parse through the inputted text one letter at a time.
   inputText = inputText.toLowerCase();
   for (let i = 0; i < inputText.length; i++) {
@@ -277,6 +304,11 @@ function toTitleCaseMLA(inputText) {
       multiple_word_prepositions[i].toLowerCase()
     );
   }
+
+  // Search the string for a "to". If the word following the to is a verb, make
+  // the "to" lower case.
+  
+
 
   return outputText;
 }
@@ -483,3 +515,4 @@ function testMLA() {
     }
   }
 }
+
